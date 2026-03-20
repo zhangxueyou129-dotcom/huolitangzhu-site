@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>火力堂主 夜路档案</title>
+  <title>火力堂主 纪录片片头档案</title>
   <style>
     :root {
-      --bg: #111312;
-      --paper: #efe1c8;
-      --ink: #1b1713;
-      --sand: #d8c09a;
-      --amber: #d57228;
-      --rust: #8f3f23;
-      --olive: #49553b;
-      --steel: #42505f;
-      --night: #171d23;
-      --line: rgba(27, 23, 19, 0.1);
-      --soft-line: rgba(255, 245, 227, 0.12);
-      --shadow: 0 26px 60px rgba(0, 0, 0, 0.24);
+      --bg: #0d0f11;
+      --panel: rgba(18, 21, 24, 0.92);
+      --panel-soft: rgba(28, 32, 37, 0.78);
+      --paper: #efe6d5;
+      --muted: #c6b9a6;
+      --line: rgba(255, 244, 224, 0.1);
+      --gold: #d08a3d;
+      --rust: #8b4628;
+      --blue: #50657d;
+      --olive: #5c6b4c;
+      --shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
     }
 
     * { box-sizing: border-box; }
@@ -25,11 +24,11 @@
     body {
       margin: 0;
       color: var(--paper);
-      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+      font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(213, 114, 40, 0.16), transparent 26%),
-        radial-gradient(circle at 85% 12%, rgba(73, 85, 59, 0.12), transparent 24%),
-        linear-gradient(180deg, #0f1112, #191d1f 40%, #121416);
+        radial-gradient(circle at top left, rgba(208, 138, 61, 0.14), transparent 24%),
+        radial-gradient(circle at 82% 10%, rgba(80, 101, 125, 0.12), transparent 24%),
+        linear-gradient(180deg, #0c0e10, #171b1f 44%, #0d1012);
     }
 
     body::before {
@@ -38,145 +37,153 @@
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.014) 1px, transparent 1px);
-      background-size: 100% 28px, 28px 100%;
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+      background-size: 100% 30px, 30px 100%;
       opacity: 0.18;
     }
 
     a { color: inherit; text-decoration: none; }
 
     .page {
-      width: min(1200px, calc(100% - 24px));
+      width: min(1180px, calc(100% - 24px));
       margin: 0 auto;
-      padding: 18px 0 44px;
+      padding: 18px 0 40px;
       position: relative;
       z-index: 1;
     }
 
-    .hero {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .poster,
-    .panel,
+    .hero,
+    .section,
+    .card,
     .video-card,
     .source-card,
     .quote-card,
-    .tile {
+    .frame {
       border-radius: 28px;
+      border: 1px solid var(--line);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
 
-    .poster {
+    .hero {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 18px;
+    }
+
+    .title-card {
       position: relative;
-      min-height: 620px;
+      min-height: 640px;
       padding: 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.03), transparent 28%),
-        radial-gradient(circle at 18% 8%, rgba(213, 114, 40, 0.22), transparent 26%),
-        linear-gradient(145deg, #1b2026, #0f1217 62%, #251811);
-      border: 1px solid var(--soft-line);
+        linear-gradient(180deg, rgba(255,255,255,0.03), transparent 24%),
+        radial-gradient(circle at 20% 10%, rgba(208,138,61,0.18), transparent 24%),
+        linear-gradient(145deg, #161a1f, #101317 64%, #241810);
     }
 
-    .poster::before {
-      content: "HUO";
+    .title-card::before {
+      content: "EP01";
       position: absolute;
-      right: 20px;
-      top: 14px;
-      font: 700 clamp(6rem, 14vw, 12rem) / 0.86 Georgia, serif;
-      color: rgba(255, 236, 210, 0.05);
+      right: 22px;
+      top: 18px;
+      font: 700 clamp(5rem, 13vw, 10rem) / 0.9 Georgia, serif;
+      color: rgba(255,245,227,0.05);
       letter-spacing: -0.08em;
     }
 
-    .poster::after {
+    .title-card::after {
       content: "";
       position: absolute;
       inset: 16px;
-      border: 1px solid rgba(255, 245, 227, 0.08);
       border-radius: 20px;
+      border: 1px solid rgba(255,244,224,0.08);
       pointer-events: none;
     }
 
     .eyebrow,
     .chip,
-    .button {
+    .button,
+    .timecode {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 245, 227, 0.12);
-      background: rgba(255, 245, 227, 0.06);
+      border: 1px solid rgba(255,244,224,0.12);
+      background: rgba(255,244,224,0.05);
       font-size: 12px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
-    .eyebrow {
-      color: #ffd69f;
+    .eyebrow,
+    .timecode {
       width: fit-content;
+      color: #ffd7a2;
     }
 
     .button:hover {
-      background: rgba(213, 114, 40, 0.16);
-      border-color: rgba(213, 114, 40, 0.38);
+      background: rgba(208,138,61,0.14);
+      border-color: rgba(208,138,61,0.36);
     }
 
-    .poster h1,
+    h1,
     .section-title,
-    .card-title,
+    .card h3,
     .quote-card h3 {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
       letter-spacing: -0.05em;
     }
 
-    .poster h1 {
+    h1 {
       margin-top: 18px;
-      max-width: 8ch;
-      font-size: clamp(3.1rem, 8vw, 6.8rem);
+      max-width: 7ch;
+      font-size: clamp(3.2rem, 8vw, 6.7rem);
       line-height: 0.92;
     }
 
-    .poster p,
-    .panel p,
-    .video-card p,
-    .source-card p,
-    .quote-card p,
-    .tile p {
+    p {
       margin: 0;
-      color: #d6c9b7;
-      line-height: 1.78;
+      color: var(--muted);
+      line-height: 1.82;
     }
 
-    .poster-copy {
+    .lead {
       max-width: 56ch;
       margin-top: 16px;
     }
 
-    .poster-foot {
+    .subtitle-strip {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,244,224,0.08);
+      background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      font-size: 0.96rem;
+      line-height: 1.8;
+      color: #dfd2c0;
+    }
+
+    .hero-foot {
       display: grid;
       gap: 14px;
     }
 
     .action-row,
     .chip-row,
-    .source-actions,
-    .meta-row {
+    .meta-row,
+    .source-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
-    .stats {
+    .stat-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
@@ -185,15 +192,15 @@
     .stat {
       padding: 16px;
       border-radius: 18px;
-      border: 1px solid rgba(255, 245, 227, 0.08);
-      background: linear-gradient(160deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,244,224,0.08);
+      background: rgba(255,255,255,0.03);
     }
 
     .stat strong {
       display: block;
       margin-bottom: 6px;
       font-size: 1.45rem;
-      color: #fff2de;
+      color: #fff3dd;
     }
 
     .hero-side {
@@ -201,25 +208,26 @@
       gap: 18px;
     }
 
-    .panel {
+    .frame {
       padding: 20px;
-      border: 1px solid var(--soft-line);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), transparent 20%),
-        linear-gradient(145deg, rgba(20,22,25,0.97), rgba(15,18,22,0.96));
+        linear-gradient(180deg, rgba(255,255,255,0.04), transparent 20%),
+        linear-gradient(145deg, rgba(20,23,27,0.97), rgba(14,17,20,0.96));
     }
 
-    .panel.kraft {
-      color: var(--ink);
+    .frame.paper {
+      color: #1b1713;
       background:
-        radial-gradient(circle at top left, rgba(213,114,40,0.12), transparent 25%),
-        linear-gradient(180deg, #f2e5cf, #dcc39f 90%);
-      border: 1px solid rgba(27, 23, 19, 0.1);
+        radial-gradient(circle at top left, rgba(208,138,61,0.12), transparent 24%),
+        linear-gradient(180deg, #eee0c7, #d8c09a 92%);
+      border-color: rgba(27, 23, 19, 0.12);
     }
 
-    .panel.kraft p,
-    .panel.kraft .chip {
+    .frame.paper p,
+    .frame.paper .chip {
       color: rgba(27, 23, 19, 0.78);
+      border-color: rgba(27, 23, 19, 0.12);
+      background: rgba(27, 23, 19, 0.04);
     }
 
     .frame-head {
@@ -231,17 +239,12 @@
       margin-bottom: 12px;
     }
 
-    .panel-title {
-      margin: 0;
-      font-size: 1.1rem;
-    }
-
     .embed {
       position: relative;
       aspect-ratio: 16 / 9;
-      overflow: hidden;
       border-radius: 18px;
-      border: 1px solid rgba(255, 245, 227, 0.08);
+      overflow: hidden;
+      border: 1px solid rgba(255,244,224,0.08);
       background: #050607;
     }
 
@@ -254,13 +257,8 @@
     }
 
     .section {
-      display: grid;
-      gap: 16px;
       padding: 22px;
-      border-radius: 28px;
-      border: 1px solid var(--soft-line);
-      background: linear-gradient(180deg, rgba(20,23,26,0.96), rgba(13,16,19,0.95));
-      box-shadow: var(--shadow);
+      background: linear-gradient(180deg, rgba(20,23,27,0.96), rgba(13,16,19,0.95));
     }
 
     .section-head {
@@ -269,86 +267,93 @@
       gap: 16px;
       align-items: end;
       flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .section-label {
+      color: #ffc98a;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
 
     .section-title {
-      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
     }
 
-    .grid {
+    .grid,
+    .tiles,
+    .video-grid,
+    .quote-grid,
+    .source-grid,
+    .timeline,
+    .stack,
+    .split {
       display: grid;
-      gap: 16px;
+      gap: 12px;
     }
 
-    .media-grid {
-      grid-template-columns: 1.1fr 0.9fr;
+    .grid.media {
+      grid-template-columns: 1.08fr 0.92fr;
     }
 
     .tiles {
-      display: grid;
-      gap: 12px;
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .tile {
-      min-height: 230px;
+    .card-tile {
+      min-height: 228px;
       padding: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,244,224,0.08);
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      border: 1px solid rgba(255, 245, 227, 0.08);
       background:
-        linear-gradient(180deg, transparent 0 35%, rgba(9, 10, 13, 0.88) 100%),
-        radial-gradient(circle at top left, rgba(213, 114, 40, 0.18), transparent 36%),
-        linear-gradient(140deg, #1a1e24, #101317 70%);
+        linear-gradient(180deg, transparent 0 35%, rgba(8, 10, 12, 0.9) 100%),
+        radial-gradient(circle at top left, rgba(208,138,61,0.18), transparent 34%),
+        linear-gradient(145deg, #1b2026, #101317 72%);
     }
 
-    .tile.alt {
+    .card-tile.alt {
       background:
-        linear-gradient(180deg, transparent 0 35%, rgba(9, 10, 13, 0.88) 100%),
-        radial-gradient(circle at top right, rgba(73, 85, 59, 0.18), transparent 36%),
-        linear-gradient(140deg, #1a1e24, #101317 70%);
+        linear-gradient(180deg, transparent 0 35%, rgba(8, 10, 12, 0.9) 100%),
+        radial-gradient(circle at top right, rgba(92,107,76,0.18), transparent 34%),
+        linear-gradient(145deg, #1b2026, #101317 72%);
     }
 
-    .tile.red {
+    .card-tile.red {
       background:
-        linear-gradient(180deg, transparent 0 35%, rgba(9, 10, 13, 0.92) 100%),
-        radial-gradient(circle at top left, rgba(143, 63, 35, 0.26), transparent 36%),
-        linear-gradient(140deg, #1c1716, #100f12 70%);
+        linear-gradient(180deg, transparent 0 35%, rgba(8, 10, 12, 0.92) 100%),
+        radial-gradient(circle at top left, rgba(139,70,40,0.22), transparent 34%),
+        linear-gradient(145deg, #1d1817, #100f12 72%);
     }
 
-    .tile::before {
+    .card-tile::before {
       content: "";
       position: absolute;
       inset: 14px;
-      border: 1px solid rgba(255, 245, 227, 0.08);
       border-radius: 14px;
+      border: 1px solid rgba(255,244,224,0.08);
       pointer-events: none;
     }
 
-    .tile-tag {
+    .shot {
       margin-bottom: auto;
-      color: #ffc987;
+      color: #ffcf90;
       font-size: 11px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
-    .tile h3,
+    .card h3,
     .video-card h3,
-    .source-card h3 {
+    .source-card h3,
+    .card-tile h3 {
       margin: 0 0 8px;
-      font-size: 1.2rem;
-    }
-
-    .video-grid,
-    .quote-grid,
-    .source-grid,
-    .timeline,
-    .stack {
-      display: grid;
-      gap: 12px;
+      font-size: 1.18rem;
     }
 
     .video-grid {
@@ -358,20 +363,21 @@
     .video-card,
     .source-card,
     .quote-card,
-    .tile-note {
+    .card {
       padding: 18px;
-      border: 1px solid var(--soft-line);
+      border-radius: 22px;
+      border: 1px solid rgba(255,244,224,0.08);
       background: rgba(255,255,255,0.03);
     }
 
     .video-card .embed { margin-bottom: 12px; }
 
-    .meta-row span,
-    .chip {
+    .chip,
+    .meta-row span {
       padding: 7px 11px;
       border-radius: 999px;
-      border: 1px solid rgba(255,245,227,0.1);
-      background: rgba(255,245,227,0.05);
+      border: 1px solid rgba(255,244,224,0.1);
+      background: rgba(255,244,224,0.05);
       color: inherit;
     }
 
@@ -380,19 +386,17 @@
     }
 
     .quote-card {
-      background: linear-gradient(165deg, rgba(213,114,40,0.1), rgba(255,255,255,0.03));
+      background: linear-gradient(165deg, rgba(208,138,61,0.1), rgba(255,255,255,0.03));
     }
 
     .quote-mark {
-      color: #ffc987;
+      color: #ffcf90;
       font-size: 2.4rem;
       line-height: 1;
       margin-bottom: 10px;
     }
 
     .split {
-      display: grid;
-      gap: 16px;
       grid-template-columns: 1.08fr 0.92fr;
     }
 
@@ -407,17 +411,17 @@
       top: 8px;
       bottom: 8px;
       width: 2px;
-      background: linear-gradient(180deg, rgba(213,114,40,0.55), rgba(66,80,95,0.12));
+      background: linear-gradient(180deg, rgba(208,138,61,0.55), rgba(80,101,125,0.12));
     }
 
     .timeline-item {
       position: relative;
       display: grid;
+      grid-template-columns: 86px 1fr;
       gap: 16px;
-      grid-template-columns: 76px 1fr;
       padding: 16px 18px 16px 30px;
       border-radius: 20px;
-      border: 1px solid rgba(255,245,227,0.08);
+      border: 1px solid rgba(255,244,224,0.08);
       background: rgba(255,255,255,0.03);
     }
 
@@ -429,12 +433,12 @@
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: var(--amber);
-      box-shadow: 0 0 0 6px rgba(213,114,40,0.16);
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(208,138,61,0.16);
     }
 
     .year {
-      color: #ffc987;
+      color: #ffcf90;
       font-weight: 700;
       letter-spacing: 0.08em;
     }
@@ -442,9 +446,9 @@
     .network {
       padding: 16px;
       border-radius: 24px;
-      border: 1px solid rgba(255,245,227,0.08);
+      border: 1px solid rgba(255,244,224,0.08);
       background:
-        radial-gradient(circle at 50% 5%, rgba(213,114,40,0.14), transparent 22%),
+        radial-gradient(circle at 50% 5%, rgba(208,138,61,0.14), transparent 22%),
         linear-gradient(180deg, #181d23, #111419);
     }
 
@@ -453,52 +457,53 @@
     .footer-note {
       padding: 16px 18px;
       border-radius: 18px;
-      border: 1px solid rgba(255,245,227,0.08);
+      border: 1px solid rgba(255,244,224,0.08);
       background: rgba(255,255,255,0.03);
     }
 
     @media (max-width: 1024px) {
       .hero,
-      .media-grid,
+      .grid.media,
       .split,
       .video-grid,
       .quote-grid,
       .tiles,
-      .stats,
+      .stat-row,
       .source-grid {
         grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 720px) {
-      .page { width: min(100% - 14px, 1200px); }
-      .poster,
-      .panel,
+      .page { width: min(100% - 14px, 1180px); }
+      .title-card,
+      .frame,
       .section { padding: 18px; }
+      .title-card { min-height: auto; }
+      h1 { font-size: 3.6rem; }
       .timeline-item { grid-template-columns: 1fr; padding-left: 24px; }
       .timeline::before { left: 10px; }
       .timeline-item::before { left: 1px; }
-      .poster { min-height: auto; }
-      .poster h1 { font-size: 3.4rem; }
     }
   </style>
 </head>
 <body>
   <main class="page">
     <section class="hero">
-      <article class="poster">
+      <article class="title-card">
         <div>
-          <div class="eyebrow">Night Road Dossier</div>
-          <h1>火力堂主 夜路档案</h1>
-          <p class="poster-copy">这次不是简单换颜色，而是把整站改成更像“直播圈人物海报页”的美术方向。版式更不对称，字更大胆，画面更像夜路、车灯、旧节目带和多人直播现场的混合体，气质上更贴火力堂主这种老户外、关系网型、靠场面感立住的人物。</p>
+          <div class="eyebrow">Documentary Opening Sequence</div>
+          <h1>火力堂主 纪录片片头档案</h1>
+          <p class="lead">这版把网站美术往“纪录片片头”再推进一层。核心不是堆更多装饰，而是让观感更像人物纪录短片的开场：片名卡、时间码、章节编号、镜头说明、字幕条和纪实感更强的章节节奏。</p>
+          <div class="subtitle-strip">片头设定：一个在斗鱼户外叙事里穿行多年的老主播，不是最锋利的单核主角，却总在关键场面里留下存在感。</div>
         </div>
-        <div class="poster-foot">
+        <div class="hero-foot">
           <div class="action-row">
-            <a class="button" href="#media-wall">素材墙</a>
-            <a class="button" href="#video-archive">视频档案</a>
-            <a class="button" href="#network">关系图</a>
+            <a class="button" href="#media-wall">章节一 素材墙</a>
+            <a class="button" href="#video-archive">章节二 视频档案</a>
+            <a class="button" href="#network">章节三 关系图</a>
           </div>
-          <div class="stats">
+          <div class="stat-row">
             <div class="stat"><strong>241123</strong><span>斗鱼公开可见房间号。</span></div>
             <div class="stat"><strong>赵鹏</strong><span>人物公开命名线索。</span></div>
             <div class="stat"><strong>场面型主播</strong><span>更擅长把场子接起来。</span></div>
@@ -507,202 +512,195 @@
       </article>
 
       <div class="hero-side">
-        <article class="panel">
+        <article class="frame">
           <div class="frame-head">
             <div>
-              <div class="eyebrow">Archive Tape 01</div>
-              <h3 class="panel-title">《直播时代》主视频入口</h3>
+              <div class="timecode">00:00:18 / Archive Tape</div>
+              <h3>《直播时代》主视频入口</h3>
             </div>
             <span class="chip">2018 坐标</span>
           </div>
           <div class="embed">
             <iframe src="https://player.bilibili.com/player.html?bvid=BV1os411A79R&page=1&as_wide=1&high_quality=1" allowfullscreen title="直播时代"></iframe>
           </div>
-          <p style="margin-top:12px;">把这支视频放在首页中心，是因为它最能把火力堂主放回到钱小佳系内容语境里。</p>
+          <p style="margin-top:12px;">把这支视频放在片头侧栏，是因为它最像纪录片里的第一组关键镜头，能迅速建立早期内容语境。</p>
         </article>
 
-        <article class="panel kraft">
-          <div class="kicker">Art Direction</div>
-          <h3 class="panel-title">新版美术方向</h3>
-          <p>夜路、路牌、旧节目带、直播档案、火光金属、关系网。不是偶像海报，而是“你看得出这个人是在场面的中心附近活了很多年”的那种质感。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="media-wall">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Media Wall</div>
-          <h2 class="section-title">素材墙</h2>
-          <p>把平台页、活动稿、话题页和公开报道做成更像路演海报的拼贴结构，让页面先有“人物气质”，再有资料信息。</p>
-        </div>
-      </div>
-      <div class="grid media-grid">
-        <div class="tiles">
-          <article class="tile">
-            <div class="tile-tag">Douyu Identity</div>
-            <h3>直播间页本身就是最硬的人物照片</h3>
-            <p>对火力堂主来说，身份不是一张定妆照，而是整个平台入口的组合：昵称、房间号、标签、场面。</p>
-            <div class="source-actions"><a class="button" href="https://www.douyu.com/241123/" target="_blank" rel="noreferrer">打开斗鱼直播间</a></div>
-          </article>
-          <article class="tile alt">
-            <div class="tile-tag">Topic Trace</div>
-            <h3>鱼吧把“赵鹏”这条线钉在平台里</h3>
-            <p>话题页不只是资料补充，它像人物在平台内部留下的一块名字牌。</p>
-            <div class="source-actions"><a class="button" href="https://yuba.douyu.com/thema/24515" target="_blank" rel="noreferrer">打开鱼吧话题</a></div>
-          </article>
-          <article class="tile red">
-            <div class="tile-tag">Platform Event</div>
-            <h3>《奶团再出发》把他拉回近年活动镜头</h3>
-            <p>这类同框素材能证明，他后期的存在感更多落在团播和节目系统里。</p>
-            <div class="source-actions"><a class="button" href="https://www.sohu.com/a/712656875_515611" target="_blank" rel="noreferrer">打开活动稿</a></div>
-          </article>
-          <article class="tile alt">
-            <div class="tile-tag">Media Retelling</div>
-            <h3>媒体稿把“户外老主播”这个印象写实了</h3>
-            <p>虽然不是官方传记，但很能体现一个时期观众怎么理解火力堂主。</p>
-            <div class="source-actions"><a class="button" href="https://k.sina.com.cn/article_6561068462_18711f5ae00100qqtn.html" target="_blank" rel="noreferrer">打开新浪稿件</a></div>
-          </article>
-        </div>
-
-        <div class="stack">
-          <article class="quote-card">
-            <div class="quote-mark">“</div>
-            <h3>人物画像关键词</h3>
-            <p>老户外、搭档感、关系网、场面气、接节目、扛氛围、在不同主播群像里都能找到自己的位置。</p>
-          </article>
-          <article class="quote-card">
-            <div class="quote-mark">“</div>
-            <h3>视觉关键词</h3>
-            <p>夜路灯光、旧海报边框、档案拼贴、路牌橙、冷钢蓝、火锈红。整体比上一版更像专题视觉，不像普通资料卡。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="video-archive">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Video Archive</div>
-          <h2 class="section-title">视频档案</h2>
-          <p>继续保留视频素材，但把卡片气质往“节目带”和“切片档案”方向推，让内容层也统一进新的美术语言。</p>
-        </div>
-      </div>
-      <div class="video-grid">
-        <article class="video-card">
-          <div class="embed"><iframe src="https://player.bilibili.com/player.html?bvid=BV1os411A79R&page=1&as_wide=1&high_quality=1" allowfullscreen title="直播时代"></iframe></div>
-          <h3>《直播时代》</h3>
-          <p>最重要的早期内容坐标之一。</p>
-          <div class="meta-row"><span>2018</span><span>共同出品</span><span>早期认知入口</span></div>
-        </article>
-        <article class="video-card">
-          <div class="embed"><iframe src="https://player.bilibili.com/player.html?bvid=BV1ZP4y1K716&page=1&as_wide=1&high_quality=1" allowfullscreen title="钱小佳评价火力堂主"></iframe></div>
-          <h3>钱小佳评价火力堂主</h3>
-          <p>适合观察圈内评价语境和“赵鹏”称呼的出现方式。</p>
-          <div class="meta-row"><span>B站二创</span><span>关系线索</span><span>圈内口吻</span></div>
-        </article>
-        <article class="video-card">
-          <div class="embed"><iframe src="https://player.bilibili.com/player.html?bvid=BV1MJ41157XG&page=1&as_wide=1&high_quality=1" allowfullscreen title="火力堂主谈钱小佳旧事"></iframe></div>
-          <h3>火力堂主谈钱小佳旧事</h3>
-          <p>能看出旧关系并没有消失，而是持续活在观众叙事里。</p>
-          <div class="meta-row"><span>旧事回讲</span><span>人物关联</span><span>话题延续</span></div>
+        <article class="frame paper">
+          <div class="section-label">Director Notes</div>
+          <h3>这次重设计的重点</h3>
+          <p>上一版更像人物海报页，这一版改成“片头序章”思路。信息没变，但阅读节奏更像被剪进一部人物纪录片：先看片名，再看镜头，再看章节。</p>
         </article>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Profile</div>
-          <h2 class="section-title">人物与语境</h2>
-          <p>这块内容没有大改结论，但版式上更像贴在档案板上的摘记，而不是规则分栏说明书。</p>
+    <div class="mosaic">
+      <section class="section" id="media-wall">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Chapter 01</div>
+            <h2 class="section-title">素材墙</h2>
+            <p>我把平台页、话题页、活动稿和公开报道处理成更像“分镜卡”的结构，让每个素材都像一帧片头里的关键信息镜头。</p>
+          </div>
         </div>
-      </div>
-      <div class="split">
-        <div class="timeline">
-          <article class="timeline-item"><div class="year">身份</div><div><h3>斗鱼老牌户外 / 泛娱乐主播</h3><p>更像在长期联动、多人节目和关系网络里稳步形成存在感的人物。</p></div></article>
-          <article class="timeline-item"><div class="year">风格</div><div><h3>更适合“有场子”的内容环境</h3><p>人物光谱不在极端偶像感，而在搭档、接梗、串场和把节目往前推的能力。</p></div></article>
-          <article class="timeline-item"><div class="year">线索</div><div><h3>“赵鹏”是重要公开名号线</h3><p>鱼吧话题、切片标题和圈内称呼都能把火力堂主和“赵鹏 / 赵老师 / 鹏哥”串起来。</p></div></article>
+        <div class="grid media">
+          <div class="tiles">
+            <article class="card-tile">
+              <div class="shot">Shot 01 / Identity</div>
+              <h3>直播间页本身就是人物第一镜头</h3>
+              <p>对火力堂主来说，身份不是定妆照，而是整个直播间入口的组合。</p>
+              <div class="source-actions"><a class="button" href="https://www.douyu.com/241123/" target="_blank" rel="noreferrer">打开斗鱼直播间</a></div>
+            </article>
+            <article class="card-tile alt">
+              <div class="shot">Shot 02 / Alias</div>
+              <h3>鱼吧把“赵鹏”这条命名线留下来</h3>
+              <p>这页像人物在平台内部留下的一块名字牌，也是粉丝话题和圈内称呼的入口。</p>
+              <div class="source-actions"><a class="button" href="https://yuba.douyu.com/thema/24515" target="_blank" rel="noreferrer">打开鱼吧话题</a></div>
+            </article>
+            <article class="card-tile red">
+              <div class="shot">Shot 03 / Return</div>
+              <h3>《奶团再出发》让他重新回到近年活动镜头</h3>
+              <p>这类同框素材说明，他后期更常出现在团播和节目系统里。</p>
+              <div class="source-actions"><a class="button" href="https://www.sohu.com/a/712656875_515611" target="_blank" rel="noreferrer">打开活动稿</a></div>
+            </article>
+            <article class="card-tile alt">
+              <div class="shot">Shot 04 / Retelling</div>
+              <h3>媒体稿把“户外老主播”的印象写实了</h3>
+              <p>它不是官方传记，却很像纪录片旁白里会出现的时代描述。</p>
+              <div class="source-actions"><a class="button" href="https://k.sina.com.cn/article_6561068462_18711f5ae00100qqtn.html" target="_blank" rel="noreferrer">打开新浪稿件</a></div>
+            </article>
+          </div>
+          <div class="stack">
+            <article class="quote-card">
+              <div class="quote-mark">“</div>
+              <h3>人物画像关键词</h3>
+              <p>老户外、搭档感、关系网、场面气、接节目、扛氛围、在不同主播群像里都能找到位置。</p>
+            </article>
+            <article class="quote-card">
+              <div class="quote-mark">“</div>
+              <h3>这版的片头感来自哪里</h3>
+              <p>来自编号、时间码、片名卡、镜头说明和更克制的情绪，而不是靠堆满装饰元素去做“设计感”。</p>
+            </article>
+          </div>
         </div>
-        <div class="quote-grid">
-          <article class="quote-card"><div class="quote-mark">“</div><h3>最稳的早期主线</h3><p>和钱小佳的合作，是火力堂主被更大范围观众认识的关键入口。</p></article>
-          <article class="quote-card"><div class="quote-mark">“</div><h3>最稳的中期标签</h3><p>从搭档型辅助位，慢慢变成有自己受众盘子的老户外主播。</p></article>
-          <article class="quote-card"><div class="quote-mark">“</div><h3>最明显的近年变化</h3><p>公开痕迹越来越多地落在团播、节目、活动、切片和关系网络。</p></article>
-          <article class="quote-card"><div class="quote-mark">“</div><h3>和唐6儿的公开关系</h3><p>能确认的是高频同框和高频互动，不把未经证实的私人叙事当成定论。</p></article>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section" id="network">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Network</div>
-          <h2 class="section-title">斗鱼户外圈关系图</h2>
-          <p>关系图也一起换了气质，整体更像夜色里的关系板，而不是普通信息图。</p>
+      <section class="section" id="video-archive">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Chapter 02</div>
+            <h2 class="section-title">视频档案</h2>
+            <p>视频区保留，但每支视频现在更像纪录片章节里的“资料带”。</p>
+          </div>
         </div>
-      </div>
-      <div class="split">
-        <article class="network">
-          <svg viewBox="0 0 860 520" aria-label="火力堂主关系图">
-            <defs>
-              <linearGradient id="g1" x1="0%" x2="100%"><stop offset="0%" stop-color="#d57228" /><stop offset="100%" stop-color="#8f3f23" /></linearGradient>
-              <linearGradient id="g2" x1="0%" x2="100%"><stop offset="0%" stop-color="#49553b" /><stop offset="100%" stop-color="#42505f" /></linearGradient>
-            </defs>
-            <path d="M170 138 C250 155, 310 182, 390 232" fill="none" stroke="url(#g1)" stroke-width="4" stroke-linecap="round" opacity="0.9" />
-            <path d="M165 334 C255 302, 314 280, 390 248" fill="none" stroke="url(#g2)" stroke-width="4" stroke-linecap="round" opacity="0.84" />
-            <path d="M470 236 C560 225, 620 205, 706 152" fill="none" stroke="#8f3f23" stroke-width="4" stroke-linecap="round" opacity="0.8" />
-            <path d="M470 256 C560 286, 626 316, 710 370" fill="none" stroke="#42505f" stroke-width="4" stroke-linecap="round" opacity="0.76" />
-            <circle cx="430" cy="245" r="72" fill="#8f3f23" opacity="0.96" />
-            <circle cx="430" cy="245" r="88" fill="none" stroke="rgba(213,114,40,0.18)" stroke-width="22" />
-            <text x="430" y="236" text-anchor="middle" fill="#fff3df" font-size="31" font-weight="700">火力堂主</text>
-            <text x="430" y="270" text-anchor="middle" fill="#ffe2ba" font-size="16">连接老户外圈与近年活动场景的中轴点</text>
-            <circle cx="126" cy="132" r="54" fill="#d57228" opacity="0.92" />
-            <text x="126" y="126" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">钱小佳</text>
-            <text x="126" y="150" text-anchor="middle" fill="#fff6ea" font-size="14">早期合作 / 成名入口</text>
-            <circle cx="124" cy="345" r="52" fill="#49553b" opacity="0.92" />
-            <text x="124" y="338" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">华府圈子</text>
-            <text x="124" y="362" text-anchor="middle" fill="#eef5ed" font-size="14">长期并置讨论</text>
-            <circle cx="735" cy="145" r="50" fill="#8f3f23" opacity="0.92" />
-            <text x="735" y="138" text-anchor="middle" fill="#fff" font-size="23" font-weight="700">唐6儿</text>
-            <text x="735" y="162" text-anchor="middle" fill="#ffe4de" font-size="14">近年高频互动</text>
-            <circle cx="734" cy="376" r="58" fill="#42505f" opacity="0.94" />
-            <text x="734" y="367" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">平台综艺 / 团播</text>
-            <text x="734" y="392" text-anchor="middle" fill="#eaf3fb" font-size="14">奶团再出发、小团团等同框语境</text>
-          </svg>
-        </article>
-        <div class="stack">
-          <article class="quote-card">
-            <div class="quote-mark">“</div>
-            <h3>读图结论</h3>
-            <p>火力堂主不是孤立中心，而是连接器。他前后串起的是不同代际的户外叙事和不同场景的节目氛围。</p>
+        <div class="video-grid">
+          <article class="video-card">
+            <div class="embed"><iframe src="https://player.bilibili.com/player.html?bvid=BV1os411A79R&page=1&as_wide=1&high_quality=1" allowfullscreen title="直播时代"></iframe></div>
+            <h3>《直播时代》</h3>
+            <p>最重要的早期内容坐标之一。</p>
+            <div class="meta-row"><span>2018</span><span>共同出品</span><span>早期认知入口</span></div>
           </article>
-          <article class="quote-card">
-            <div class="quote-mark">“</div>
-            <h3>这版关系图的美术思路</h3>
-            <p>不追求规整商务感，而是强调“夜色、线索、路径、人与人的牵引”，让画面更有情绪。</p>
+          <article class="video-card">
+            <div class="embed"><iframe src="https://player.bilibili.com/player.html?bvid=BV1ZP4y1K716&page=1&as_wide=1&high_quality=1" allowfullscreen title="钱小佳评价火力堂主"></iframe></div>
+            <h3>钱小佳评价火力堂主</h3>
+            <p>适合观察圈内评价语境与“赵鹏”称呼的出现方式。</p>
+            <div class="meta-row"><span>B站二创</span><span>关系线索</span><span>圈内口吻</span></div>
+          </article>
+          <article class="video-card">
+            <div class="embed"><iframe src="https://player.bilibili.com/player.html?bvid=BV1MJ41157XG&page=1&as_wide=1&high_quality=1" allowfullscreen title="火力堂主谈钱小佳旧事"></iframe></div>
+            <h3>火力堂主谈钱小佳旧事</h3>
+            <p>说明旧关系没有消失，而是持续活在观众叙事里。</p>
+            <div class="meta-row"><span>旧事回讲</span><span>人物关联</span><span>话题延续</span></div>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Sources</div>
-          <h2 class="section-title">素材来源</h2>
-          <p>我保留了所有关键来源入口，只是把视觉语言重新统一了。</p>
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Chapter 03</div>
+            <h2 class="section-title">人物与语境</h2>
+            <p>内容逻辑没有推翻，但表现方式从“说明书”改成更像片头字幕与旁白摘要。</p>
+          </div>
         </div>
-      </div>
-      <div class="source-grid">
-        <article class="source-card"><h3>斗鱼直播间</h3><p>支撑人物识别、房间号和平台存在状态。</p><div class="source-actions"><a class="button" href="https://www.douyu.com/241123/" target="_blank" rel="noreferrer">打开斗鱼直播间</a></div></article>
-        <article class="source-card"><h3>斗鱼鱼吧话题</h3><p>支撑“赵鹏”线索和粉丝话题锚点。</p><div class="source-actions"><a class="button" href="https://yuba.douyu.com/thema/24515" target="_blank" rel="noreferrer">打开鱼吧话题</a></div></article>
-        <article class="source-card"><h3>B站《直播时代》</h3><p>最重要的视频素材之一，适合观察早期内容位置。</p><div class="source-actions"><a class="button" href="https://www.bilibili.com/video/BV1os411A79R/" target="_blank" rel="noreferrer">打开视频</a></div></article>
-        <article class="source-card"><h3>钱小佳评价火力堂主</h3><p>适合观察圈内评价和二创传播语境。</p><div class="source-actions"><a class="button" href="https://www.bilibili.com/video/BV1ZP4y1K716/" target="_blank" rel="noreferrer">打开视频</a></div></article>
-        <article class="source-card"><h3>火力堂主谈钱小佳旧事</h3><p>补充钱小佳仍是其观众叙事里的高频关键词。</p><div class="source-actions"><a class="button" href="https://www.bilibili.com/video/BV1MJ41157XG" target="_blank" rel="noreferrer">打开视频</a></div></article>
-        <article class="source-card"><h3>《奶团再出发》活动稿</h3><p>支撑火力堂主在近年多人节目体系中的同框位置。</p><div class="source-actions"><a class="button" href="https://www.sohu.com/a/712656875_515611" target="_blank" rel="noreferrer">打开活动稿</a></div></article>
-      </div>
-      <div class="footer-note">这版重构重点放在“美术风格”，所以内容逻辑没有被打散，但信息呈现从资料站改成了更像夜路海报和人物档案拼贴的方向。你如果还想更极致一点，我下一步可以继续往“纪录片片头风”或者“废土直播路书风”再推一层。</div>
-    </section>
+        <div class="split">
+          <div class="timeline">
+            <article class="timeline-item"><div class="year">身份</div><div><h3>斗鱼老牌户外 / 泛娱乐主播</h3><p>更像在长期联动、多人节目和关系网络里稳步形成存在感的人物。</p></div></article>
+            <article class="timeline-item"><div class="year">风格</div><div><h3>更适合“有场子”的内容环境</h3><p>人物光谱不在极端偶像感，而在搭档、接梗、串场和把节目往前推的能力。</p></div></article>
+            <article class="timeline-item"><div class="year">线索</div><div><h3>“赵鹏”是重要公开名号线</h3><p>鱼吧话题、切片标题和圈内称呼都能把火力堂主和“赵鹏 / 赵老师 / 鹏哥”串起来。</p></div></article>
+          </div>
+          <div class="quote-grid">
+            <article class="quote-card"><div class="quote-mark">“</div><h3>最稳的早期主线</h3><p>和钱小佳的合作，是火力堂主被更大范围观众认识的关键入口。</p></article>
+            <article class="quote-card"><div class="quote-mark">“</div><h3>最稳的中期标签</h3><p>从搭档型辅助位，慢慢变成有自己受众盘子的老户外主播。</p></article>
+            <article class="quote-card"><div class="quote-mark">“</div><h3>最明显的近年变化</h3><p>公开痕迹越来越多地落在团播、节目、活动、切片和关系网络。</p></article>
+            <article class="quote-card"><div class="quote-mark">“</div><h3>和唐6儿的公开关系</h3><p>能确认的是高频同框和高频互动，不把未经证实的私人叙事当成定论。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="network">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Chapter 04</div>
+            <h2 class="section-title">斗鱼户外圈关系图</h2>
+            <p>关系图也一起转成更像片头信息图的表达，少一点“海报”，多一点“叙事路径”。</p>
+          </div>
+        </div>
+        <div class="split">
+          <article class="network">
+            <svg viewBox="0 0 860 520" aria-label="火力堂主关系图">
+              <defs>
+                <linearGradient id="g1" x1="0%" x2="100%"><stop offset="0%" stop-color="#d08a3d" /><stop offset="100%" stop-color="#8b4628" /></linearGradient>
+                <linearGradient id="g2" x1="0%" x2="100%"><stop offset="0%" stop-color="#5c6b4c" /><stop offset="100%" stop-color="#50657d" /></linearGradient>
+              </defs>
+              <path d="M170 138 C250 155, 310 182, 390 232" fill="none" stroke="url(#g1)" stroke-width="4" stroke-linecap="round" opacity="0.9" />
+              <path d="M165 334 C255 302, 314 280, 390 248" fill="none" stroke="url(#g2)" stroke-width="4" stroke-linecap="round" opacity="0.84" />
+              <path d="M470 236 C560 225, 620 205, 706 152" fill="none" stroke="#8b4628" stroke-width="4" stroke-linecap="round" opacity="0.8" />
+              <path d="M470 256 C560 286, 626 316, 710 370" fill="none" stroke="#50657d" stroke-width="4" stroke-linecap="round" opacity="0.76" />
+              <circle cx="430" cy="245" r="72" fill="#8b4628" opacity="0.96" />
+              <circle cx="430" cy="245" r="88" fill="none" stroke="rgba(208,138,61,0.18)" stroke-width="22" />
+              <text x="430" y="236" text-anchor="middle" fill="#fff3df" font-size="31" font-weight="700">火力堂主</text>
+              <text x="430" y="270" text-anchor="middle" fill="#ffe2ba" font-size="16">连接老户外圈与近年活动场景的中轴点</text>
+              <circle cx="126" cy="132" r="54" fill="#d08a3d" opacity="0.92" />
+              <text x="126" y="126" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">钱小佳</text>
+              <text x="126" y="150" text-anchor="middle" fill="#fff6ea" font-size="14">早期合作 / 成名入口</text>
+              <circle cx="124" cy="345" r="52" fill="#5c6b4c" opacity="0.92" />
+              <text x="124" y="338" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">华府圈子</text>
+              <text x="124" y="362" text-anchor="middle" fill="#eef5ed" font-size="14">长期并置讨论</text>
+              <circle cx="735" cy="145" r="50" fill="#8b4628" opacity="0.92" />
+              <text x="735" y="138" text-anchor="middle" fill="#fff" font-size="23" font-weight="700">唐6儿</text>
+              <text x="735" y="162" text-anchor="middle" fill="#ffe4de" font-size="14">近年高频互动</text>
+              <circle cx="734" cy="376" r="58" fill="#50657d" opacity="0.94" />
+              <text x="734" y="367" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">平台综艺 / 团播</text>
+              <text x="734" y="392" text-anchor="middle" fill="#eaf3fb" font-size="14">奶团再出发、小团团等同框语境</text>
+            </svg>
+          </article>
+          <div class="stack">
+            <article class="quote-card"><div class="quote-mark">“</div><h3>读图结论</h3><p>火力堂主不是孤立中心，而是连接器。他前后串起的是不同代际的户外叙事和不同场景的节目氛围。</p></article>
+            <article class="quote-card"><div class="quote-mark">“</div><h3>片头信息图思路</h3><p>不做过度装饰，而是让观众像在片头几秒内，迅速看懂人物、时代和关系路径。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Appendix</div>
+            <h2 class="section-title">素材来源</h2>
+            <p>我保留了关键来源入口，只是把整站的美术叙事改成了纪录片片头风。</p>
+          </div>
+        </div>
+        <div class="source-grid">
+          <article class="source-card"><h3>斗鱼直播间</h3><p>支撑人物识别、房间号和平台存在状态。</p><div class="source-actions"><a class="button" href="https://www.douyu.com/241123/" target="_blank" rel="noreferrer">打开斗鱼直播间</a></div></article>
+          <article class="source-card"><h3>斗鱼鱼吧话题</h3><p>支撑“赵鹏”线索和粉丝话题锚点。</p><div class="source-actions"><a class="button" href="https://yuba.douyu.com/thema/24515" target="_blank" rel="noreferrer">打开鱼吧话题</a></div></article>
+          <article class="source-card"><h3>B站《直播时代》</h3><p>最重要的视频素材之一，适合观察早期内容位置。</p><div class="source-actions"><a class="button" href="https://www.bilibili.com/video/BV1os411A79R/" target="_blank" rel="noreferrer">打开视频</a></div></article>
+          <article class="source-card"><h3>钱小佳评价火力堂主</h3><p>适合观察圈内评价和二创传播语境。</p><div class="source-actions"><a class="button" href="https://www.bilibili.com/video/BV1ZP4y1K716/" target="_blank" rel="noreferrer">打开视频</a></div></article>
+          <article class="source-card"><h3>火力堂主谈钱小佳旧事</h3><p>补充钱小佳仍是其观众叙事里的高频关键词。</p><div class="source-actions"><a class="button" href="https://www.bilibili.com/video/BV1MJ41157XG" target="_blank" rel="noreferrer">打开视频</a></div></article>
+          <article class="source-card"><h3>《奶团再出发》活动稿</h3><p>支撑火力堂主在近年多人节目体系中的同框位置。</p><div class="source-actions"><a class="button" href="https://www.sohu.com/a/712656875_515611" target="_blank" rel="noreferrer">打开活动稿</a></div></article>
+        </div>
+        <div class="footer-note">这版的变化重点在叙事视觉而不是信息增量。页面现在更像纪录片的开场序章，阅读上会先感受到“镜头、章节、旁白”，再进入资料本身。</div>
+      </section>
+    </div>
   </main>
 </body>
 </html>
